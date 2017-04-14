@@ -29,7 +29,7 @@ is similar (but not equal) to one of your defined `propTypes`.
 
 The preceding, albeit contrived, example would issue the following:
 
-![console](https://raw.githubusercontent.com/nickpisacne/maybe-you-meant/master/graphics/console.png)
+![console](https://raw.githubusercontent.com/nickpisacane/maybe-you-meant/master/graphics/console.png)
 
 # Installation
 
