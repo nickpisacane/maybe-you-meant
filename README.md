@@ -23,9 +23,13 @@ class Foo extends Component {
 ```
 
 If so, `maybe-you-meant` can help. Maybe you meant patches `React.createElement`
-to patch every single component's `componentDidMount`, `componentDidUpdate`
-(or wrap functional components) to issue console warnings whenever a prop type
-is similar (but not equal) to your defined `propTypes`
+to patch every single components `componentDidMount`, `componentDidUpdate`
+(wraps for functional components) to issue console warnings whenever a prop type
+is similar (but not equal) to one of your defined `propTypes`.
+
+The preceding, albeit contrived, example would issue the following:
+
+![console](https://raw.githubusercontent.com/nickpisacne/maybe-you-meant/master/graphics/console.png)
 
 # Installation
 
