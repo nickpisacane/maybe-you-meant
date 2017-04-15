@@ -1,4 +1,5 @@
 # maybe-you-meant
+[![CI][travis-image]][travis-url]
 
 Find deceptive typo's in your react projects.
 
@@ -61,3 +62,6 @@ The preceding, albeit contrived, example would issue the following:
 * opts.maxDistance {Number} The max distance between given prop and prop-type (from [Levenshtein ](https://en.wikipedia.org/wiki/Levenshtein_distance) algorithm) for warnings
 * opts.include {String|RegExp|Array<String|RegExp>} String or RegExp matching for including Components (tested on displayName)
 * opts.include {String|RegExp|Array<String|RegExp>} String or RegExp matching for excluding Components (tested on displayName)
+
+[travis-image]: https://travis-ci.org/nickpisacane/maybe-you-meant.svg?branch=master
+[travis-url]: https://travis-ci.org/nickpisacane/maybe-you-meant
