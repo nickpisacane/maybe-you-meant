@@ -32,7 +32,7 @@ The preceding, albeit contrived, example would issue the following:
 
 ![console](https://raw.githubusercontent.com/nickpisacane/maybe-you-meant/master/graphics/console.png)
 
-# Installation
+## Installation
 
 ```sh
   yarn add -D maybe-you-meant
@@ -40,7 +40,7 @@ The preceding, albeit contrived, example would issue the following:
   npm i -D maybe-you-meant
 ```
 
-# Usage
+## Usage
 
 ```js
   // Somewhere in the top of your app
@@ -55,13 +55,19 @@ The preceding, albeit contrived, example would issue the following:
   })
 ```
 
-# API
+## API
 
 ### maybeYouMeant([opts])
 * opts {Object}
 * opts.maxDistance {Number} The max distance between given prop and prop-type (from [Levenshtein ](https://en.wikipedia.org/wiki/Levenshtein_distance) algorithm) for warnings
 * opts.include {String|RegExp|Array<String|RegExp>} String or RegExp matching for including Components (tested on displayName)
 * opts.include {String|RegExp|Array<String|RegExp>} String or RegExp matching for excluding Components (tested on displayName)
+
+## Inspiration
+
+The awesome [why-did-you-update](https://github.com/garbles/why-did-you-update)
+module.
+
 
 [travis-image]: https://travis-ci.org/nickpisacane/maybe-you-meant.svg?branch=master
 [travis-url]: https://travis-ci.org/nickpisacane/maybe-you-meant
