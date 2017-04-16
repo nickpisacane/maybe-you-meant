@@ -33,7 +33,7 @@ function checkProps (Component, props, maxDistance) {
         const dist = levenshtein.get(prop, propType)
         if (dist <= maxDistance) {
           console.warn(
-            `${displayName}: got prop "${prop}".` +
+            `${displayName}: received prop "${prop}".` +
             ` Maybe you meant "${propType}"?`
           )
         }
