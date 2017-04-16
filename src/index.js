@@ -9,7 +9,7 @@ const toRegExp = s => typeof s === 'string' ? new RegExp(`^${s}$`) : s
 const normalizeOpts = ({
   include = /./,
   exclude = /[^a-zA-Z0-9]/,
-  maxDistance = 3
+  maxDistance = 2
 } = {}) => ({
   include: arrify(include).map(toRegExp),
   exclude: arrify(exclude).map(toRegExp),
