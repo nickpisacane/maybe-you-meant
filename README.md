@@ -51,7 +51,7 @@ The preceding, albeit contrived, example would issue the following:
   maybeYouMeant({
     maxDistance: 3,
     include: [/^Include/, 'PatchMe'],
-    exlclude: [/^Connect/, 'DoNotPatchMe']
+    exclude: [/^Connect/, 'DoNotPatchMe']
   })
 ```
 
@@ -59,9 +59,9 @@ The preceding, albeit contrived, example would issue the following:
 
 ### maybeYouMeant([opts])
 * opts {Object}
-* opts.maxDistance {Number} The max distance between given prop and prop-type (from [Levenshtein ](https://en.wikipedia.org/wiki/Levenshtein_distance) algorithm) for warnings
+* opts.maxDistance {Number} The max distance between given prop and prop-type (from [Levenshtein](https://en.wikipedia.org/wiki/Levenshtein_distance) algorithm) for warnings
 * opts.include {String|RegExp|Array<String|RegExp>} String or RegExp matching for including Components (tested on displayName)
-* opts.include {String|RegExp|Array<String|RegExp>} String or RegExp matching for excluding Components (tested on displayName)
+* opts.exclude {String|RegExp|Array<String|RegExp>} String or RegExp matching for excluding Components (tested on displayName)
 
 ## Inspiration
 
