@@ -5,7 +5,7 @@ import { render } from 'react-dom'
 import { expect } from 'chai'
 import PropTypes from 'prop-types'
 
-import maybeYouMeant from '../../src'
+import maybeYouMeant, { whitelisted } from '../../src'
 
 const createConsoleStore = (type, debug) => {
   const entries = []
@@ -48,7 +48,7 @@ describe('maybeYouMeant', function () {
   })
 
   beforeEach(() => {
-    consoleStore = createConsoleStore('warn', true)
+    consoleStore = createConsoleStore('warn')
   })
 
   afterEach(() => {
@@ -193,7 +193,7 @@ describe('maybeYouMeant', function () {
     })
 
     beforeEach(() => {
-      consoleStore = createConsoleStore('warn', true)
+      consoleStore = createConsoleStore('warn')
     })
 
     it('warns when an undeclared prop is passed', () => {
@@ -237,6 +237,7 @@ describe('maybeYouMeant', function () {
       maybeYouMeant({
         warnOnUndeclaredProps: true,
         whitelistedProps: [
+          ...whitelisted.all,
           'foo',
           /^bang-/
         ]
@@ -254,6 +255,22 @@ describe('maybeYouMeant', function () {
       React.__restoreMaybeYouMeant()
       maybeYouMeant({
         warnOnUndeclaredProps: true
+      })
+    })
+
+    it('export default set of whitelisted props', () => {
+      const props = [
+        'react',
+        'data',
+        'aria',
+        'html',
+        'svg',
+        'events',
+        'all'
+      ]
+
+      props.forEach(prop => {
+        expect(whitelisted).to.have.property(prop)
       })
     })
   })
