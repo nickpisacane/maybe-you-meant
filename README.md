@@ -34,7 +34,8 @@ The preceding, albeit contrived, example would issue the following:
 
 In addition, maybe-you-meant will warn when Components are passed props not
 defined in `propTypes`, only when `propTypes` are defined. By default, maybe-you-meant
-whitelists react's internal properties (events, data-attributes, aria-attributes, html, and svg)
+whitelists react's internal properties (events, data-attributes, aria-attributes, html, and svg).
+The following...
 
 ```js
   class Foo extends Component {
@@ -49,7 +50,7 @@ whitelists react's internal properties (events, data-attributes, aria-attributes
   />
 ```
 
-Will result in:
+...will result in:
 
 ![console](https://raw.githubusercontent.com/nickpisacane/maybe-you-meant/master/graphics/console-undeclared-prop.png)
 
