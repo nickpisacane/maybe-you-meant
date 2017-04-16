@@ -65,7 +65,7 @@ function checkProps (Component, props, opts) {
         const dist = levenshtein.get(prop, propType)
         if (dist <= maxDistance) {
           console.warn(
-            `(maybe-you-meant) ${displayName}: received prop "${prop}".` +
+            `${displayName}: received prop "${prop}".` +
             ` Maybe you meant "${propType}"?`
           )
         }
@@ -77,7 +77,7 @@ function checkProps (Component, props, opts) {
         !testAgainstRegArr(prop, whitelistedProps)
       ) {
         console.warn(
-          `(maybe-you-meant) ${displayName}: received prop "${prop}",` +
+          `${displayName}: received prop "${prop}",` +
           ` but "${prop}" is not declared in propTypes. Maybe you should add ` +
           `"${prop}" to your propTypes.`
         )
