@@ -64,7 +64,7 @@ describe('maybeYouMeant', function () {
     }
     m(<HasNoMethods foobbar />, { attachTo: node })
     expectConsole(
-      /HasNoMethods: got prop "foobbar". Maybe you meant "foobar"\?/,
+      /HasNoMethods: received prop "foobbar". Maybe you meant "foobar"\?/,
       0
     )
   })
@@ -97,15 +97,15 @@ describe('maybeYouMeant', function () {
     expect(didMount.calledOnce).to.equal(true)
     expect(didUpdate.calledOnce).to.equal(true)
     expectConsole(
-      /HasMethods: got prop "foobbar". Maybe you meant "foobar"\?/,
+      /HasMethods: received prop "foobbar". Maybe you meant "foobar"\?/,
       0
     )
     expectConsole(
-      /HasMethods: got prop "foobbar". Maybe you meant "foobar"\?/,
+      /HasMethods: received prop "foobbar". Maybe you meant "foobar"\?/,
       1
     )
     expectConsole(
-      /HasMethods: got prop "bangg". Maybe you meant "bang"\?/,
+      /HasMethods: received prop "bangg". Maybe you meant "bang"\?/,
       2
     )
   })
@@ -150,7 +150,7 @@ describe('maybeYouMeant', function () {
     includes.forEach(Inc => {
       m(<Inc foobbar />)
       const re = new RegExp(
-        `${Inc.displayName}: got prop "foobbar". Maybe you meant "foobar"\?`
+        `${Inc.displayName}: received prop "foobbar". Maybe you meant "foobar"\?`
       )
       expectConsole(re)
       consoleStore.clear()
