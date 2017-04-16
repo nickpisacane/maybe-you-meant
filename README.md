@@ -32,6 +32,27 @@ The preceding, albeit contrived, example would issue the following:
 
 ![console](https://raw.githubusercontent.com/nickpisacane/maybe-you-meant/master/graphics/console.png)
 
+In addition, maybe-you-meant will warn when Components are passed props not
+defined in `propTypes`, only when `propTypes` are defined. By default, maybe-you-meant
+whitelists react's internal properties (events, data-attributes, aria-attributes, html, and svg)
+
+```js
+  class Foo extends Component {
+    static propTypes = {}
+  }
+  // The following will result in a warning for the `bar` prop.
+  <Foo
+    bar='Bang'
+    data-foo='bar'
+    aria-expanded='false'
+    onClick={() => {}}
+  />
+```
+
+Will result in:
+
+![console](https://raw.githubusercontent.com/nickpisacane/maybe-you-meant/master/graphics/console-undeclared-prop.png)
+
 ## Installation
 
 ```sh
@@ -64,7 +85,7 @@ The preceding, albeit contrived, example would issue the following:
   // maybe-you-meant exports whitelisted properies from all of the following
   // `all` is a combination of the rest.
   const { all, react, events, aria, data, html, svg } = whitelisted
-  
+
   maybeYouMeant({
     whitelistedProps: [
       ...whitelisted.all,
