@@ -42,7 +42,9 @@ describe('maybeYouMeant', function () {
 
   before (() => {
     node = document.createElement('div')
-    maybeYouMeant()
+    maybeYouMeant({
+      warnOnUndeclaredProps: false
+    })
   })
 
   beforeEach(() => {
@@ -124,6 +126,7 @@ describe('maybeYouMeant', function () {
   it('include exclude opts', () => {
     React.__restoreMaybeYouMeant()
     maybeYouMeant({
+      warnOnUndeclaredProps: false,
       include: [/^Include/, 'PatchMe'],
       exclude: [/^Exclude/, 'DoNotPatchMe']
     })
@@ -163,6 +166,35 @@ describe('maybeYouMeant', function () {
     })
 
     React.__restoreMaybeYouMeant()
-    maybeYouMeant()
+    maybeYouMeant({ warnOnUndeclaredProps: false })
+  })
+
+  describe('Warn on undeclared props', () => {
+    before(() => {
+      React.__restoreMaybeYouMeant()
+      maybeYouMeant({
+        warnOnUndeclaredProps: true
+      })
+    })
+
+    after(() => {
+      React.__restoreMaybeYouMeant()
+      maybeYouMeant({
+        warnOnUndeclaredProps: false
+      })
+    })
+
+    beforeEach(() => {
+      consoleStore = createConsoleStore('warn', true)
+    })
+
+    it('warns when an undeclared prop is passed', () => {
+      class Foo extends Component {
+        static propTypes = {}
+        render () { return <div>foo</div> }
+      }
+
+      m(<Foo bar='bang' />)
+    })
   })
 })
