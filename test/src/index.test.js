@@ -48,7 +48,7 @@ describe('maybeYouMeant', function () {
   })
 
   beforeEach(() => {
-    consoleStore = createConsoleStore('warn')
+    consoleStore = createConsoleStore('warn', true)
   })
 
   afterEach(() => {
@@ -170,6 +170,14 @@ describe('maybeYouMeant', function () {
   })
 
   describe('Warn on undeclared props', () => {
+    const expectPropWarning = (displayName, propName, index) => {
+      const re = new RegExp(
+        `${displayName}: received prop "${propName}", but "${propName}" is not declared in propTypes. ` +
+        `Maybe you should add "${propName}" to the propTypes for ${displayName}.`
+      )
+      return expectConsole(re, index)
+    }
+
     before(() => {
       React.__restoreMaybeYouMeant()
       maybeYouMeant({
@@ -195,6 +203,58 @@ describe('maybeYouMeant', function () {
       }
 
       m(<Foo bar='bang' />)
+      expectPropWarning('Foo', 'bar')
+    })
+
+    it('doesn\'t warn for whitelisted props', () => {
+      class Foo extends Component {
+        static propTypes = {}
+        render () { return <div>foo</div> }
+      }
+
+      m(<Foo
+        onClick={() => {}}
+        data-bar='bang'
+        htmlFor='someId'
+        style={{ color: 'blue' }}
+        accentHeight='42'
+        aria-expanded='false'
+      />)
+      expect(consoleStore.entries).to.have.length(0)
+    })
+
+    it('doesn\'t warn when `propTypes` is not defined', () => {
+      class Foo extends Component {
+        render () { return <div>foo</div> }
+      }
+
+      m(<Foo bang='bar' />)
+      expect(consoleStore.entries).to.have.length(0)
+    })
+
+    it('whitelistedProps', () => {
+      React.__restoreMaybeYouMeant()
+      maybeYouMeant({
+        warnOnUndeclaredProps: true,
+        whitelistedProps: [
+          'foo',
+          /^bang-/
+        ]
+      })
+
+      class Foo extends Component {
+        static propTypes = {}
+        render () { return <div>foo</div> }
+      }
+
+      m(<Foo foo='bar' bar='bang' bang-baz='foo' />)
+      expectPropWarning('Foo', 'bar')
+      expect(consoleStore.entries).to.have.length(1)
+
+      React.__restoreMaybeYouMeant()
+      maybeYouMeant({
+        warnOnUndeclaredProps: true
+      })
     })
   })
 })
