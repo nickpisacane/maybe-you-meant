@@ -79,7 +79,7 @@ function checkProps (Component, props, opts) {
         console.warn(
           `${displayName}: received prop "${prop}",` +
           ` but "${prop}" is not declared in propTypes. Maybe you should add ` +
-          `"${prop}" to your propTypes.`
+          `"${prop}" to the propTypes for ${displayName}.`
         )
       }
     }
