@@ -6,7 +6,8 @@ export const react = [
   'selected',
   'style',
   'suppressContentEditableWarning',
-  'value'
+  'value',
+  'children'
 ]
 
 export const data = [
