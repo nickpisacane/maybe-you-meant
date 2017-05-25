@@ -1,6 +1,6 @@
 {
   "name": "maybe-you-meant",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Find deceptive prop-type typeo's in your react apps",
   "main": "lib",
   "repository": "https://github.com/nickpisacane/maybe-you-meant",
@@ -44,10 +44,13 @@
   },
   "dependencies": {
     "arrify": "^1.0.1",
+    "fast-levenshtein": "^2.0.6",
     "lodash.some": "^4.6.0"
   },
   "standard": {
     "parser": "babel-eslint",
-    "ignore": ["test/**/*.js"]
+    "ignore": [
+      "test/**/*.js"
+    ]
   }
 }
